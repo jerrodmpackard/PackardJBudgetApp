@@ -1,12 +1,18 @@
 const saveToLocalStorage = (expense) => {
     let expenses = getLocalStorage();
 
-    if (!expenses.includes(expense)) {
+    if (!expenses.includes(expense.expenseName)) {
         expenses.push(expense);
     }
 
     localStorage.setItem("Expenses", JSON.stringify(expenses));
 
+}
+
+const saveBudgetToLocalStorage = (budget) => {
+    let totalBudget = getLocalStorage();
+
+    localStorage.setItem("Budget", )
 }
 
 const getLocalStorage = () => {
