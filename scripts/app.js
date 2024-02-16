@@ -1,4 +1,4 @@
-import { saveToLocalStorage, getLocalStorage, removeFromLocalStorage } from "./localstorage.js";
+import { saveToLocalStorage, getLocalStorage, saveBudgetToLocalStorage, getBudgetLocalStorage, removeFromLocalStorage } from "./localstorage.js";
 
 let injectBudgetHere = document.getElementById('injectBudgetHere');
 let injectExpensesHere = document.getElementById('injectExpensesHere');
@@ -10,8 +10,17 @@ let addExpenseBtn = document.getElementById('addExpenseBtn');
 let editExpenseNameInput = document.getElementById('editExpenseNameInput');
 let editExpenseBtn = document.getElementById('editExpenseBtn');
 
+// Add Budget: Adds a budget and saves it to local storage
+
+// Add an expense: Adds an expense and subtracts from budget
+    // Must convert budget to an integer, perform arithmetic, convert back to string, save to local storage again
+
+// Edit an expense: Removes an expense and adds to the budget
+    // Must once again convert budget to an integer, perform arithmetic, convert back to string, save to local storage
+
+
 updateBudgetBtn.addEventListener('click', () => {
-    // saveToLocalStorage(updateBudgetInput.value);
+    saveBudgetToLocalStorage(updateBudgetInput.value);
     // updateBudgetInput.value = '';
 
     injectBudgetHere.textContent = updateBudgetInput.value;
@@ -33,7 +42,7 @@ addExpenseBtn.addEventListener('click', () => {
 });
 
 const displayValues = () => {
-    injectBudgetHere.textContent = updateBudgetInput.value;
+    injectBudgetHere.textContent = getBudgetLocalStorage();
 
 
     let expenses = getLocalStorage();
