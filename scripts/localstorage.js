@@ -1,7 +1,17 @@
 const saveToLocalStorage = (expense) => {
     let expenses = getLocalStorage();
+    console.log(expenses);
+    console.log(expense.expenseName);
 
-    if (!expenses.includes(expense.expenseName)) {
+    let includes;
+
+    expenses.map(item => {
+        if (item.includes(expense.expenseName)) {
+            includes = true;
+        }
+    })
+
+    if (!includes) {
         expenses.push(expense);
     }
 
@@ -9,21 +19,32 @@ const saveToLocalStorage = (expense) => {
 
 }
 
-const saveBudgetToLocalStorage = (budget) => {
-    let totalBudget = getLocalStorage();
-
-    localStorage.setItem("Budget", )
-}
 
 const getLocalStorage = () => {
     let localStorageData = localStorage.getItem("Expenses");
 
-    if(localStorageData == null){
+    if (localStorageData == null) {
         return [];
     }
 
     return JSON.parse(localStorageData);
 
+}
+
+const saveBudgetToLocalStorage = (budget) => {
+    let totalBudget = getBudgetLocalStorage();
+
+    localStorage.setItem("Budget", totalBudget)
+}
+
+const getBudgetLocalStorage = () => {
+    let budgetData = localStorage.getItem("Budget");
+
+    if (budgetData == null) {
+        return [];
+    }
+
+    return budgetData;
 }
 
 const removeFromLocalStorage = (expense) => {
@@ -37,4 +58,4 @@ const removeFromLocalStorage = (expense) => {
 
 }
 
-export {saveToLocalStorage, getLocalStorage, removeFromLocalStorage};
+export { saveToLocalStorage, getLocalStorage, removeFromLocalStorage };

@@ -10,12 +10,14 @@ let addExpenseBtn = document.getElementById('addExpenseBtn');
 let editExpenseNameInput = document.getElementById('editExpenseNameInput');
 let editExpenseBtn = document.getElementById('editExpenseBtn');
 
-// updateBudgetBtn.addEventListener('click', () => {
-//     saveToLocalStorage(updateBudgetInput.value);
-//     updateBudgetInput.value = '';
+updateBudgetBtn.addEventListener('click', () => {
+    // saveToLocalStorage(updateBudgetInput.value);
+    // updateBudgetInput.value = '';
 
-//     displayValues();
-// });
+    injectBudgetHere.textContent = updateBudgetInput.value;
+
+    displayValues();
+});
 
 
 addExpenseBtn.addEventListener('click', () => {
@@ -31,6 +33,9 @@ addExpenseBtn.addEventListener('click', () => {
 });
 
 const displayValues = () => {
+    injectBudgetHere.textContent = updateBudgetInput.value;
+
+
     let expenses = getLocalStorage();
 
     injectExpensesHere.textContent = '';
